@@ -1,0 +1,36 @@
+buildscript {
+    repositories {
+        add(new org.apache.ivy.plugins.resolver.URLResolver()) {
+            name = 'GitHub'
+            addArtifactPattern 'http://cloud.github.com/downloads/[organisation]/[module]/[module]-[revision].[ext]'
+        }
+    }
+
+    dependencies {
+        classpath 'bmuschko:gradle-gae-plugin:0.6.1'
+    }
+}
+
+apply plugin: 'gae'
+
+gae {
+    httpPort = 80
+
+    appcfg {
+        email = 'dh.Lotan@gmail.com'
+        passIn = true
+
+        logs {
+            severity = 1
+            outputFile = file('mylogs.txt')
+        }
+    }
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	gaeSdk 'com.google.appengine:appengine-java-sdk:1.6.5'
+}
