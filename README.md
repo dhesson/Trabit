@@ -12,5 +12,5 @@ Running the application
 3. Run the following command:   
         gradlew gaeRun   
         
-For more information/other tasks, see the GAE Gradle Plugin @ https://github.com/bmuschko/gradle-gae-plugin,  
+For more information/other tasks, see the [GAE Gradle Plugin](https://github.com/bmuschko/gradle-gae-plugin "GAE Gradle Plugin") @ ,  
 or run "gradlew tasks" to see a task list.
