@@ -1,12 +1,10 @@
-Trabit
-======
+#Trabit
 
 Wager on a whole nutha level.
 
 
 
-Running the application
-=======================
+##Running the application
 1. Open command prompt
 2. Change directory to the project (containing the gradlew file)
 3. Run the following command: **gradlew gaeRun**
