@@ -1,8 +1,5 @@
 #Trabit
-
 Wager on a whole nutha level.
-
-
 
 ##Running the application
 1. Open command prompt
