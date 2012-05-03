@@ -1,3 +1,4 @@
+// Prebuild configuration - in case the build itself has dependencies
 buildscript {
     repositories {
         add(new org.apache.ivy.plugins.resolver.URLResolver()) {
@@ -13,8 +14,17 @@ buildscript {
 
 apply plugin: 'gae'
 
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	gaeSdk 'com.google.appengine:appengine-java-sdk:1.6.5'
+}
+
 gae {
     httpPort = 80
+	downloadSdk = true
 
     appcfg {
         email = 'dh.Lotan@gmail.com'
@@ -27,10 +37,16 @@ gae {
     }
 }
 
-repositories {
-	mavenCentral()
-}
-
-dependencies {
-	gaeSdk 'com.google.appengine:appengine-java-sdk:1.6.5'
+task configureGaeSdkRoot {
+	def gaeSdkFile = project.configurations.getByName("gaeSdk").singleFile
+	def filename = gaeSdkFile.name.substring(0, gaeSdkFile.name.lastIndexOf('.'))
+	
+	def explodedGaeSdkDir = new StringBuilder()
+	explodedGaeSdkDir <<= project.buildDir
+	explodedGaeSdkDir <<= System.getProperty('file.separator')
+	explodedGaeSdkDir <<= "exploded-gae-sdk"
+	
+	def gaeSdkRootDir = new File(explodedGaeSdkDir.toString(), filename)
+	System.properties[trabitGaeSdkRootEnvVar] = gaeSdkRootDir.toString();
+	println 'App Engine SDK root set to: ' + System.properties[trabitGaeSdkRootEnvVar]
 }
