@@ -8,7 +8,9 @@ buildscript {
     }
 
     dependencies {
-        classpath 'bmuschko:gradle-gae-plugin:0.6.1'
+        classpath (
+			"bmuschko:gradle-gae-plugin:0.6.1"
+		)
     }
 }
 
@@ -16,6 +18,9 @@ apply plugin: 'gae'
 
 repositories {
 	mavenCentral()
+	maven {
+		url "http://objectify-appengine.googlecode.com/svn/maven"
+	}
 }
 
 dependencies {
@@ -29,6 +34,9 @@ dependencies {
 		"com.sun.jersey:jersey-json:1.12",
 		"com.sun.jersey:jersey-grizzly2:1.12",
 		"com.sun.jersey:jersey-core:1.12",
+		
+		// Persistence
+		"com.googlecode.objectify:objectify:3.0",
 		
 		// JAXRS
 		"javax.ws.rs:jsr311-api:1.1.1"
