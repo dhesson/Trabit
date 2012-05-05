@@ -19,7 +19,20 @@ repositories {
 }
 
 dependencies {
-	gaeSdk 'com.google.appengine:appengine-java-sdk:1.6.5'
+	gaeSdk (
+		"com.google.appengine:appengine-java-sdk:1.6.5"
+	)
+	compile (
+		// Jersey
+		"com.sun.jersey:jersey-server:1.12",
+		"com.sun.jersey:jersey-servlet:1.12",
+		"com.sun.jersey:jersey-json:1.12",
+		"com.sun.jersey:jersey-grizzly2:1.12",
+		"com.sun.jersey:jersey-core:1.12",
+		
+		// JAXRS
+		"javax.ws.rs:jsr311-api:1.1.1"
+	)
 }
 
 gae {
